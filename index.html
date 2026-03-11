@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hassan Gouda — Software Solutions</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:    #0d1117;
+      --mid:     #161b22;
+      --card:    #1c2230;
+      --border:  #2a3344;
+      --accent:  #3b82f6;
+      --accent2: #06b6d4;
+      --green:   #10b981;
+      --text:    #e6edf3;
+      --muted:   #8b949e;
+      --white:   #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── HERO ────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #0d1117 0%, #1a2540 50%, #0d1117 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 40px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .availability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16,185,129,0.12);
+      border: 1px solid rgba(16,185,129,0.35);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .availability-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-tagline {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text);
+      max-width: 580px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .contact-pill:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* ── LAYOUT ──────────────────────────────── */
+    .page { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    section { padding: 52px 0; border-bottom: 1px solid var(--border); }
+    section:last-child { border-bottom: none; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 18px; height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 560px;
+      margin-bottom: 36px;
+    }
+
+    /* ── SERVICES GRID ───────────────────────── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px 24px;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .service-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .service-card:hover::after { opacity: 1; }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 5px;
+      background: rgba(59,130,246,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(59,130,246,0.2);
+    }
+
+    /* ── PROJECTS ────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+
+    .project-card:hover { border-color: var(--border); border-color: rgba(59,130,246,0.4); }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .project-header h3 {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .project-badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 5px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .badge-new  { background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+    .badge-ai   { background: rgba(139,92,246,0.15); color: #a78bfa;      border: 1px solid rgba(139,92,246,0.3); }
+    .badge-full { background: rgba(59,130,246,0.15); color: var(--accent); border: 1px solid rgba(59,130,246,0.3); }
+
+    .project-card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    /* ── STACK ───────────────────────────────── */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+
+    .stack-group {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .stack-group h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 12px;
+    }
+
+    .stack-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .stack-item {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* ── WHY ME ──────────────────────────────── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+
+    .why-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 20px;
+      text-align: center;
+    }
+
+    .why-card .num {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .why-card .label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ── CTA ─────────────────────────────────── */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.06));
+      border: 1px solid rgba(59,130,246,0.2) !important;
+      border-radius: 18px;
+      padding: 48px 40px !important;
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .cta-section .section-title { margin-bottom: 12px; }
+
+    .cta-section p {
+      color: var(--muted);
+      max-width: 460px;
+      margin: 0 auto 28px;
+      font-size: 0.95rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--accent), #2563eb);
+      color: white;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 4px 15px rgba(59,130,246,0.3);
+    }
+
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer {
+      text-align: center;
+      padding: 28px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── HOW I WORK ──────────────────────────────── */
+    .how-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 28px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .how-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 24px 28px;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .how-step:last-child { border-bottom: none; }
+    .how-step:hover { background: rgba(59,130,246,0.04); }
+
+    .step-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+      padding-top: 2px;
+    }
+
+    .step-body h3 {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .step-body p {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── HOBBIES ──────────────────────────────────── */
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .hobby-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 20px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .hobby-card:hover { border-color: rgba(59,130,246,0.4); transform: translateY(-2px); }
+
+    .hobby-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      line-height: 1;
+      padding-top: 2px;
+    }
+
+    .hobby-body h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .hobby-body p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .about-footer {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 18px 22px;
+      margin-top: 8px;
+    }
+
+    .about-footer p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .sensfish-callout {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      background: linear-gradient(135deg, rgba(59,130,246,0.07), rgba(6,182,212,0.05));
+      border: 1px solid rgba(59,130,246,0.25);
+      border-radius: 14px;
+      padding: 24px 26px;
+    }
+
+    .callout-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      line-height: 1;
+      padding-top: 2px;
+    }
+
+    .callout-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .callout-body p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 20px 36px; }
+      .cta-section { padding: 32px 20px !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ────────────────────────────────────── -->
+<div class="hero">
+  <div class="availability-badge">Available for Projects</div>
+
+  <h1>Hassan <span>Gouda</span></h1>
+  <p class="hero-sub">Full-Stack Engineer · AI & Automation · Cairo, Egypt (Remote-First)</p>
+
+  <p class="hero-tagline">
+    I build custom software for businesses — databases, backends,<br>automation tools, and anything in between.
+  </p>
+
+  <div class="contact-row">
+    <a href="mailto:hassanebrahim33441277@gmail.com" class="contact-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      hassanebrahim33441277@gmail.com
+    </a>
+    <a href="tel:+201103090034" class="contact-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.4 2 2 0 0 1 3.05 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +20 110 309 0034
+    </a>
+    <a href="https://linkedin.com/in/hassan-gouda" class="contact-pill" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      linkedin.com/in/hassan-gouda
+    </a>
+    <a href="https://github.com/GamingGouda" class="contact-pill" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      github.com/GamingGouda
+    </a>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ── STATS ────────────────────────────────── -->
+  <section style="padding: 36px 0; border-bottom: 1px solid var(--border);">
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="num">5+</div>
+        <div class="label">Years of Development Experience</div>
+      </div>
+      <div class="why-card">
+        <div class="num">100%</div>
+        <div class="label">Remote B2B Delivery</div>
+      </div>
+      <div class="why-card">
+        <div class="num">Full</div>
+        <div class="label">SDLC Ownership — Spec to Deploy</div>
+      </div>
+      <div class="why-card">
+        <div class="num">GMT+2</div>
+        <div class="label">Cairo — Flexible Hours for EU/US</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ──────────────────────────────── -->
+  <section>
+    <div class="section-label">What I Build</div>
+    <h2 class="section-title">What Can I Build For You?</h2>
+    <p class="section-desc">I work as a B2B contractor — you bring me the problem, I figure out the best solution and build it. Here's the kind of work I do most.</p>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">🗄️</div>
+        <h3>Database Design & Engineering</h3>
+        <p>If your data is living in spreadsheets or scattered across tools, I'll design a proper database around your exact workflow — fast, clean, and built to grow with you.</p>
+        <div class="service-tags">
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">MS SQL Server</span>
+          <span class="tag">Schema Design</span>
+          <span class="tag">Stored Procs</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <h3>Backend & API Development</h3>
+        <p>Need your systems to talk to each other, or a solid engine behind your product? I build backends and APIs that are clean, documented, and easy to build on later.</p>
+        <div class="service-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">TypeScript</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3>Automation & Workflow Scripts</h3>
+        <p>If someone on your team is doing the same thing every day by hand, that's something I can automate. Reports, data processing, integrations — let's free up their time.</p>
+        <div class="service-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Data Pipelines</span>
+          <span class="tag">Scheduling</span>
+          <span class="tag">ETL</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Data Analysis & Reporting Tools</h3>
+        <p>Got data but not sure what to do with it? I build analysis tools and dashboards that turn raw numbers into something you can actually make decisions from.</p>
+        <div class="service-tags">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Dashboards</span>
+          <span class="tag">Visualization</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🧠</div>
+        <h3>AI & Computer Vision Features</h3>
+        <p>Want to add something smart to your product? I've built real-time AI systems from scratch — pose detection, predictions, pattern recognition. Let's talk about what's possible.</p>
+        <div class="service-tags">
+          <span class="tag">OpenCV</span>
+          <span class="tag">MediaPipe</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Prompt Eng.</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🖥️</div>
+        <h3>Internal Tools & Desktop Apps</h3>
+        <p>Still running your operations on Excel? I build proper internal tools with simple UIs that anyone on your team can use — no training required, no tech headaches.</p>
+        <div class="service-tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">CustomTkinter</span>
+          <span class="tag">Full-Stack</span>
+          <span class="tag">GUI Apps</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ──────────────────────────────── -->
+  <section>
+    <div class="section-label">Proof of Work</div>
+    <h2 class="section-title">Things I've Actually Built</h2>
+    <p class="section-desc">Not mockups, not tutorials. Real systems I designed and shipped, end to end.</p>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Sensfish Data Analysis Program</h3>
+          <span class="project-badge badge-new">Latest</span>
+        </div>
+        <p>Custom data analysis tool built for Sensfish — processes, analyzes, and visualizes operational data to support business decisions. Delivered as a full end-to-end solution.</p>
+        <div class="service-tags">
+          <span class="tag">Python</span><span class="tag">Data Analysis</span><span class="tag">Visualization</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Enterprise Finance Organizer</h3>
+          <span class="project-badge badge-full">Client Project</span>
+        </div>
+        <p>Desktop app bridging operations and accounting for Pyramid Tyres. Automated financial reporting with a custom GUI that lets non-technical staff manage complex financial datasets — secured as a real paid contract.</p>
+        <div class="service-tags">
+          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">CustomTkinter</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>University HR Management System</h3>
+          <span class="project-badge badge-full">Full-Stack</span>
+        </div>
+        <p>Full-stack HR platform handling employee data, payroll, and attendance tracking. Advanced SQL stored procedures for departmental logic, integrated with a responsive Next.js frontend.</p>
+        <div class="service-tags">
+          <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">MS SQL Server</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>AI Gym Assistant (XP Friend Coach)</h3>
+          <span class="project-badge badge-ai">AI / CV</span>
+        </div>
+        <p>Real-time pose estimation system tracking 33+ body landmarks at &lt;50ms latency. Detects improper form, auto-counts reps, and overlays live feedback — demonstrating production-grade AI integration.</p>
+        <div class="service-tags">
+          <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">MediaPipe</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Valorant AI Prediction Tool</h3>
+          <span class="project-badge badge-ai">ML</span>
+        </div>
+        <p>Self-learning prediction engine using a reinforcement learning feedback loop to forecast match outcomes from live game data. Demonstrates real-time data pipelines and autonomous ML refinement.</p>
+        <div class="service-tags">
+          <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Data Pipeline</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── STACK ─────────────────────────────────── -->
+  <section>
+    <div class="section-label">Technology</div>
+    <h2 class="section-title">My Tech Stack</h2>
+    <p class="section-desc">Tools I actually know well and use daily — not just things I've listed to look good.</p>
+
+    <div class="stack-grid">
+      <div class="stack-group">
+        <h4>Languages</h4>
+        <div class="stack-items">
+          <span class="stack-item">Python (Expert)</span>
+          <span class="stack-item">SQL (Advanced)</span>
+          <span class="stack-item">TypeScript</span>
+          <span class="stack-item">JavaScript</span>
+          <span class="stack-item">C++</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>AI & Data</h4>
+        <div class="stack-items">
+          <span class="stack-item">OpenCV</span>
+          <span class="stack-item">MediaPipe</span>
+          <span class="stack-item">Machine Learning</span>
+          <span class="stack-item">Prompt Engineering</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>Backend & Web</h4>
+        <div class="stack-items">
+          <span class="stack-item">Node.js</span>
+          <span class="stack-item">Next.js</span>
+          <span class="stack-item">REST APIs</span>
+          <span class="stack-item">HTML / CSS</span>
+          <span class="stack-item">CustomTkinter</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>Databases & Systems</h4>
+        <div class="stack-items">
+          <span class="stack-item">PostgreSQL</span>
+          <span class="stack-item">MS SQL Server</span>
+          <span class="stack-item">Git / GitHub</span>
+          <span class="stack-item">Linux Admin</span>
+          <span class="stack-item">Windows Admin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW I WORK ────────────────────────────── -->
+  <section>
+    <div class="section-label">Process</div>
+    <h2 class="section-title">How I Work</h2>
+    <p class="section-desc">I'll be honest — a lot of freelancers go quiet after you hire them. That's not how I operate. Here's what you can actually expect from me.</p>
+
+    <div class="how-steps">
+
+      <div class="how-step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h3>I learn your environment fast</h3>
+          <p>Before writing a single line of code, I get into your stack, your data, and your workflow. For Sensfish, I was fully up to speed on their environment and ready to build within the first day of the engagement.</p>
+        </div>
+      </div>
+
+      <div class="how-step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h3>I ship quickly — without cutting corners</h3>
+          <p>The full Sensfish data analysis program — every feature they asked for — was delivered and working within one week. Fast turnaround is part of how I operate, not an exception.</p>
+        </div>
+      </div>
+
+      <div class="how-step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h3>Daily updates, always</h3>
+          <p>Every day of a project you get a written update: what I completed, what I'm working on next, and if anything needs your input. You're never left guessing where things stand.</p>
+        </div>
+      </div>
+
+      <div class="how-step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h3>I own the full cycle</h3>
+          <p>From gathering requirements to deployment, I manage the entire SDLC. No handoffs, no gaps. You get a finished solution — not a half-built component that needs someone else to complete.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ── ABOUT / HOBBIES ────────────────────────── -->
+  <section>
+    <div class="section-label">A Bit About Me</div>
+    <h2 class="section-title">Who I Am Outside the Code</h2>
+    <p class="section-desc">I think the games you play say a lot about how you think. Here's mine.</p>
+
+    <div class="hobbies-grid">
+
+      <div class="hobby-card">
+        <div class="hobby-icon">⚔️</div>
+        <div class="hobby-body">
+          <h3>Elden Ring</h3>
+          <p>I don't quit when something's hard. Elden Ring is basically a game about hitting a wall, figuring out why, and coming back smarter. That's how I approach bugs and problems I've never seen before.</p>
+        </div>
+      </div>
+
+      <div class="hobby-card">
+        <div class="hobby-icon">♟️</div>
+        <div class="hobby-body">
+          <h3>Chess</h3>
+          <p>Chess taught me to think a few moves ahead before touching anything. I plan before I build — which is why I rarely have to tear things down and start over mid-project.</p>
+        </div>
+      </div>
+
+      <div class="hobby-card">
+        <div class="hobby-icon">🎮</div>
+        <div class="hobby-body">
+          <h3>Minecraft</h3>
+          <p>Pure creativity with no instructions. I've always been the kind of person who builds systems for the sake of it — whether that's a redstone machine or an automation script nobody asked for yet.</p>
+        </div>
+      </div>
+
+      <div class="hobby-card">
+        <div class="hobby-icon">🔫</div>
+        <div class="hobby-body">
+          <h3>Valorant</h3>
+          <p>Fast decisions under pressure, reading patterns, adapting mid-game. I even built an AI prediction tool for it — because if I'm going to play something obsessively, I might as well build something from it.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="about-footer">
+      <p>Most of what I know, I taught myself. I pick up new environments fast — not because I was told to, but because I genuinely like figuring out how things work. That curiosity is what makes me useful on projects that don't fit a template.</p>
+    </div>
+
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────── -->
+  <div class="cta-section">
+    <div class="section-label" style="justify-content:center;">Let's Work Together</div>
+    <h2 class="section-title">Got a Problem? Let's Talk.</h2>
+    <p>Just describe what's frustrating you — a messy process, something that takes too long, data you can't use. I'll tell you honestly what I can build and how long it'll take.</p>
+    <div class="cta-buttons">
+      <a href="mailto:hassanebrahim33441277@gmail.com" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Send me your project
+      </a>
+      <a href="https://linkedin.com/in/hassan-gouda" class="btn-secondary" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        Connect on LinkedIn
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Hassan Gouda · Full-Stack Engineer &amp; B2B Software Contractor · Cairo, Egypt
+</footer>
+
+</body>
+</html>
