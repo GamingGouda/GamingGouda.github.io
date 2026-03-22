@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- saved from url=(0030)https://gaminggouda.github.io/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hassan Gouda — Software Solutions</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -22,7 +22,9 @@
       --white:   #ffffff;
     }
 
-    body {
+    body
+    
+    {
       font-family: 'Inter', system-ui, sans-serif;
       background: var(--dark);
       color: var(--text);
@@ -82,7 +84,7 @@
       font-weight: 800;
       letter-spacing: -0.03em;
       color: var(--white);
-      margin-bottom: 10px;
+      margin-bottom: 2px;
     }
 
     .hero h1 span {
@@ -96,7 +98,7 @@
       font-size: 1.05rem;
       color: var(--muted);
       font-weight: 400;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
       letter-spacing: 0.01em;
     }
 
@@ -104,7 +106,7 @@
       font-size: 1.2rem;
       font-weight: 500;
       color: var(--text);
-      max-width: 580px;
+      max-width: clamp(600px, 70vw, 900px);
       margin: 0 auto 32px;
       line-height: 1.65;
     }
@@ -137,7 +139,7 @@
     /* ── LAYOUT ──────────────────────────────── */
     .page { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
-    section { padding: 52px 0; border-bottom: 1px solid var(--border); }
+    section { padding: 36px 0; margin-top: 50px; border-bottom: 1px solid var(--border); }
     section:last-child { border-bottom: none; }
 
     .section-label {
@@ -573,36 +575,92 @@
       .hero { padding: 40px 20px 36px; }
       .cta-section { padding: 32px 20px !important; }
     }
+    /* ── NAVBAR (THEME MATCHED) ───────────────── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: linear-gradient(90deg, rgba(59,130,246,0.25), rgba(6,182,212,0.25));
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+
+  padding: 14px 0;
+  text-align: center;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 260px;
+}
+
   </style>
 </head>
 <body>
+  
+<header class="navbar">
+  <div class="nav-container">
 
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#stack">Tech Stack</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+    </nav>
+  </div>
+</header>
 <!-- ── HERO ────────────────────────────────────── -->
-<div class="hero">
+<div class="hero" id="home">
   <div class="availability-badge">Available for Projects</div>
 
   <h1>Hassan <span>Gouda</span></h1>
-  <p class="hero-sub">Full-Stack Engineer · AI & Automation Specialist · Cairo, Egypt (Remote-First)</p>
+  <p class="hero-sub">Full-Stack Engineer · AI &amp; Automation Specialist · Cairo, Egypt (Remote-First)</p>
 
   <p class="hero-tagline">
     I build AI-powered automation systems and custom software for businesses —<br>lead generation, outreach, data pipelines, and everything in between.
   </p>
 
   <div class="contact-row">
-    <a href="https://mail.google.com/mail/?view=cm&to=hassanebrahim33441277@gmail.com&su=Project%20Inquiry" target="_blank" class="contact-pill">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    <a href="https://mail.google.com/mail/?view=cm&amp;to=hassanebrahim33441277@gmail.com&amp;su=Project%20Inquiry" target="_blank" class="contact-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
       hassanebrahim33441277@gmail.com
     </a>
     <a href="tel:+201103090034" class="contact-pill">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.4 2 2 0 0 1 3.05 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.4 2 2 0 0 1 3.05 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
       +20 110 309 0034
     </a>
     <a href="https://www.linkedin.com/in/hassan-gouda-ba40b3393/" class="contact-pill" target="_blank">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
       linkedin.com/in/hassan-gouda
     </a>
     <a href="https://github.com/GamingGouda" class="contact-pill" target="_blank">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"></path></svg>
       github.com/GamingGouda
     </a>
   </div>
@@ -612,7 +670,7 @@
 
   <!-- ── STATS ────────────────────────────────── -->
   <section style="padding: 36px 0; border-bottom: 1px solid var(--border);">
-    <div class="why-grid">
+    <div class="why-grid" id="services">
       <div class="why-card">
         <div class="num">5+</div>
         <div class="label">Years of Development Experience</div>
@@ -638,11 +696,11 @@
     <h2 class="section-title">What Can I Build For You?</h2>
     <p class="section-desc">I work as a B2B contractor — you bring me the problem, I figure out the best solution and build it. Here's the kind of work I do most.</p>
 
-    <div class="services-grid">
+    <div class="services-grid" id="services">
 
       <div class="service-card">
         <div class="service-icon">🗄️</div>
-        <h3>Database Design & Engineering</h3>
+        <h3>Database Design &amp; Engineering</h3>
         <p>If your data is living in spreadsheets or scattered across tools, I'll design a proper database around your exact workflow — fast, clean, and built to grow with you.</p>
         <div class="service-tags">
           <span class="tag">PostgreSQL</span>
@@ -654,7 +712,7 @@
 
       <div class="service-card">
         <div class="service-icon">⚙️</div>
-        <h3>Backend & API Development</h3>
+        <h3>Backend &amp; API Development</h3>
         <p>Need your systems to talk to each other, or a solid engine behind your product? I build backends and APIs that are clean, documented, and easy to build on later.</p>
         <div class="service-tags">
           <span class="tag">Python</span>
@@ -678,7 +736,7 @@
 
       <div class="service-card">
         <div class="service-icon">📊</div>
-        <h3>Data Analysis & Reporting Tools</h3>
+        <h3>Data Analysis &amp; Reporting Tools</h3>
         <p>Got data but not sure what to do with it? I build analysis tools and dashboards that turn raw numbers into something you can actually make decisions from.</p>
         <div class="service-tags">
           <span class="tag">Python</span>
@@ -690,7 +748,7 @@
 
       <div class="service-card">
         <div class="service-icon">🧠</div>
-        <h3>AI & Computer Vision Features</h3>
+        <h3>AI &amp; Computer Vision Features</h3>
         <p>Want to add something smart to your product? I've built real-time AI systems from scratch — pose detection, predictions, pattern recognition. Let's talk about what's possible.</p>
         <div class="service-tags">
           <span class="tag">OpenCV</span>
@@ -702,7 +760,7 @@
 
       <div class="service-card">
         <div class="service-icon">🖥️</div>
-        <h3>Internal Tools & Desktop Apps</h3>
+        <h3>Internal Tools &amp; Desktop Apps</h3>
         <p>Still running your operations on Excel? I build proper internal tools with simple UIs that anyone on your team can use — no training required, no tech headaches.</p>
         <div class="service-tags">
           <span class="tag">Next.js</span>
@@ -721,7 +779,7 @@
     <h2 class="section-title">Things I've Actually Built</h2>
     <p class="section-desc">Not mockups, not tutorials. Real systems I designed and shipped, end to end.</p>
 
-    <div class="projects-grid">
+    <div class="projects-grid" id="projects">
 
       <div class="project-card" style="border-color: rgba(16,185,129,0.4);">
         <div class="project-header">
@@ -740,7 +798,7 @@
           <h3>AI Customer Support Bot</h3>
           <span class="project-badge badge-new">Latest</span>
         </div>
-        <p>AI support system that monitors incoming emails, answers from a customizable knowledge base using LLaMA 3.3 70B, auto-replies when confident (&ge;7/10), and escalates complex tickets to humans with AI-suggested responses. Full ticket logging to Google Sheets — $0/month to operate.</p>
+        <p>AI support system that monitors incoming emails, answers from a customizable knowledge base using LLaMA 3.3 70B, auto-replies when confident (≥7/10), and escalates complex tickets to humans with AI-suggested responses. Full ticket logging to Google Sheets — $0/month to operate.</p>
         <div class="service-tags">
           <span class="tag">n8n</span><span class="tag">Groq AI</span><span class="tag">Gmail API</span><span class="tag">Knowledge Base</span><span class="tag">Google Sheets</span>
         </div>
@@ -811,7 +869,7 @@
     <h2 class="section-title">My Tech Stack</h2>
     <p class="section-desc">Tools I actually know well and use daily — not just things I've listed to look good.</p>
 
-    <div class="stack-grid">
+    <div class="stack-grid" id="stack"> 
       <div class="stack-group">
         <h4>Languages</h4>
         <div class="stack-items">
@@ -823,7 +881,7 @@
         </div>
       </div>
       <div class="stack-group">
-        <h4>AI & Data</h4>
+        <h4>AI &amp; Data</h4>
         <div class="stack-items">
           <span class="stack-item">OpenCV</span>
           <span class="stack-item">MediaPipe</span>
@@ -833,7 +891,7 @@
         </div>
       </div>
       <div class="stack-group">
-        <h4>Backend & Web</h4>
+        <h4>Backend &amp; Web</h4>
         <div class="stack-items">
           <span class="stack-item">Node.js</span>
           <span class="stack-item">Next.js</span>
@@ -844,7 +902,7 @@
         </div>
       </div>
       <div class="stack-group">
-        <h4>Databases & Systems</h4>
+        <h4>Databases &amp; Systems</h4>
         <div class="stack-items">
           <span class="stack-item">PostgreSQL</span>
           <span class="stack-item">MS SQL Server</span>
@@ -862,7 +920,7 @@
     <h2 class="section-title">How I Work</h2>
     <p class="section-desc">I'll be honest — a lot of freelancers go quiet after you hire them. That's not how I operate. Here's what you can actually expect from me.</p>
 
-    <div class="how-steps">
+    <div class="how-steps" id="process">
 
       <div class="how-step">
         <div class="step-num">01</div>
@@ -906,7 +964,7 @@
     <h2 class="section-title">Who I Am Outside the Code</h2>
     <p class="section-desc">I think the games you play say a lot about how you think. Here's mine.</p>
 
-    <div class="hobbies-grid">
+    <div class="hobbies-grid" id="about">
 
       <div class="hobby-card">
         <div class="hobby-icon">⚔️</div>
@@ -954,7 +1012,7 @@
     <h2 class="section-title">AI Automation Products</h2>
     <p class="section-desc">Pre-built automation systems you can plug into your business today. Each one runs on autopilot — no coding required.</p>
 
-    <div class="projects-grid">
+    <div class="projects-grid" id="products">
 
       <div class="project-card" style="border-color: var(--accent); position: relative;">
         <div class="project-header">
@@ -969,13 +1027,13 @@
           <span class="tag">CRM Logging</span>
         </div>
         <div style="margin-top: 14px; font-size: 13px; color: var(--muted); line-height: 1.8;">
-          <strong style="color: var(--text);">Template Only:</strong> $197 &mdash; workflow JSON + setup guide<br>
-          <strong style="color: var(--text);">Done-For-You:</strong> $497-997 &mdash; full setup + config + 1hr support<br>
-          <strong style="color: var(--text);">Managed Service:</strong> $297/mo &mdash; we run everything for you
+          <strong style="color: var(--text);">Template Only:</strong> $197 — workflow JSON + setup guide<br>
+          <strong style="color: var(--text);">Done-For-You:</strong> $497-997 — full setup + config + 1hr support<br>
+          <strong style="color: var(--text);">Managed Service:</strong> $297/mo — we run everything for you
         </div>
         <div style="margin-top: 14px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
           <a href="https://calendly.com/hassanebrahim33441277/30min" target="_blank" style="background: var(--accent); color: white; font-size: 13px; text-decoration: none; font-weight: 600; padding: 8px 18px; border-radius: 8px;">Book a Demo</a>
-          <a href="https://mail.google.com/mail/?view=cm&to=hassanebrahim33441277@gmail.com&su=System%201%20-%20Lead%20Gen%20Inquiry" target="_blank" style="color: var(--accent); font-size: 13px; text-decoration: none; font-weight: 500;">or email me &rarr;</a>
+          <a href="https://mail.google.com/mail/?view=cm&amp;to=hassanebrahim33441277@gmail.com&amp;su=System%201%20-%20Lead%20Gen%20Inquiry" target="_blank" style="color: var(--accent); font-size: 13px; text-decoration: none; font-weight: 500;">or email me →</a>
         </div>
       </div>
 
@@ -992,13 +1050,13 @@
           <span class="tag">Ticket Logging</span>
         </div>
         <div style="margin-top: 14px; font-size: 13px; color: var(--muted); line-height: 1.8;">
-          <strong style="color: var(--text);">Template Only:</strong> $197 &mdash; workflow JSON + setup guide<br>
-          <strong style="color: var(--text);">Done-For-You:</strong> $497-997 &mdash; full setup + KB customization + 1hr support<br>
-          <strong style="color: var(--text);">Managed Service:</strong> $297/mo &mdash; we run everything for you
+          <strong style="color: var(--text);">Template Only:</strong> $197 — workflow JSON + setup guide<br>
+          <strong style="color: var(--text);">Done-For-You:</strong> $497-997 — full setup + KB customization + 1hr support<br>
+          <strong style="color: var(--text);">Managed Service:</strong> $297/mo — we run everything for you
         </div>
         <div style="margin-top: 14px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
           <a href="https://calendly.com/hassanebrahim33441277/30min" target="_blank" style="background: var(--green); color: white; font-size: 13px; text-decoration: none; font-weight: 600; padding: 8px 18px; border-radius: 8px;">Book a Demo</a>
-          <a href="https://mail.google.com/mail/?view=cm&to=hassanebrahim33441277@gmail.com&su=System%202%20-%20Support%20Bot%20Inquiry" target="_blank" style="color: var(--accent); font-size: 13px; text-decoration: none; font-weight: 500;">or email me &rarr;</a>
+          <a href="https://mail.google.com/mail/?view=cm&amp;to=hassanebrahim33441277@gmail.com&amp;su=System%202%20-%20Support%20Bot%20Inquiry" target="_blank" style="color: var(--accent); font-size: 13px; text-decoration: none; font-weight: 500;">or email me →</a>
         </div>
       </div>
 
@@ -1011,12 +1069,12 @@
     <h2 class="section-title">Got a Problem? Let's Talk.</h2>
     <p>Just describe what's frustrating you — a messy process, something that takes too long, data you can't use. I'll tell you honestly what I can build and how long it'll take.</p>
     <div class="cta-buttons">
-      <a href="https://mail.google.com/mail/?view=cm&to=hassanebrahim33441277@gmail.com&su=Project%20Inquiry" target="_blank" class="btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      <a href="https://mail.google.com/mail/?view=cm&amp;to=hassanebrahim33441277@gmail.com&amp;su=Project%20Inquiry" target="_blank" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
         Send me your project
       </a>
       <a href="https://www.linkedin.com/in/hassan-gouda-ba40b3393/" class="btn-secondary" target="_blank">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
         Connect on LinkedIn
       </a>
     </div>
@@ -1028,5 +1086,6 @@
   © 2026 Hassan Gouda · Full-Stack Engineer &amp; B2B Software Contractor · Cairo, Egypt
 </footer>
 
-</body>
-</html>
+
+
+</body></html>
